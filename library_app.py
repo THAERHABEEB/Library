@@ -211,7 +211,7 @@ if search:
 st.markdown('<div class="book-container fade-in">', unsafe_allow_html=True)
 
 for _, row in df.iterrows():
-    st.markdown(f"""
+    img_html = f"""
     <div class="book-card">
         <img src="{row['image']}" alt="{row['title']}">
         <div class="book-title">{row['title']}</div>
@@ -225,4 +225,5 @@ for _, row in df.iterrows():
     """
     st.markdown(img_html, unsafe_allow_html=True)
     
+
 
