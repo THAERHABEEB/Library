@@ -231,9 +231,10 @@ for _, row in df.iterrows():
     """
     url = row["image"]
     response = requests.get(url)
-    img = Image.open(BytesIO(response.content))
+    st.image(row['image'], caption=row['title'], use_container_width=True)
     st.image(img, caption=row["title"], use_container_width=True)
     
+
 
 
 
