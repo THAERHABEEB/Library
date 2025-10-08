@@ -229,11 +229,18 @@ for _, row in df.iterrows():
         </div>
     </div>
     """
-    url = row["image"]
-    response = requests.get(url)
-    st.image(row['image'], caption=row['title'], use_container_width=True)
-    st.image(img, caption=row["title"], use_container_width=True)
     
+    url = row["image"]
+try:
+    response = requests.get(url, timeout=5)
+    if response.status_code == 200 and "image" in response.headers.get("content-type", ""):
+        img = Image.open(BytesIO(response.content))
+        st.image(img, caption=row["title"], use_container_width=True)
+    else:
+        st.image("https://via.placeholder.com/400x600.png?text=No+Image", caption=row["title"], use_container_width=True)
+except Exception as e:
+    st.image("https://via.placeholder.com/400x600.png?text=Image+Error", caption=row["title"], use_container_width=True)
+
 
 
 
