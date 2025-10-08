@@ -223,5 +223,6 @@ for _, row in df.iterrows():
         </div>
     </div>
     """
-    st.image(str(row["image"]), use_container_width=True)
+    st.markdown(img_html, unsafe_allow_html=True)
     
+
