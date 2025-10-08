@@ -222,6 +222,6 @@ for _, row in df.iterrows():
             <a href="{row['link']}" class="download-btn" download>⬇️ تحميل</a>
         </div>
     </div>
-    """, unsafe_allow_html=True)
-
-st.markdown("</div>", unsafe_allow_html=True)
+    """
+    st.image(str(row["image"]), use_container_width=True)
+    
