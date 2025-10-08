@@ -213,10 +213,7 @@ if search:
 
 # عرض الكتب
 st.markdown('<div class="book-container fade-in">', unsafe_allow_html=True)
-url = row["image"]
-response = requests.get(url)
-img = Image.open(BytesIO(response.content))
-st.image(img, caption=row["title"], use_container_width=True)
+
 
 
 for _, row in df.iterrows():
@@ -232,8 +229,12 @@ for _, row in df.iterrows():
         </div>
     </div>
     """
-    st.markdown(img_html, unsafe_allow_html=True)
+    url = row["image"]
+    response = requests.get(url)
+    img = Image.open(BytesIO(response.content))
+    st.image(img, caption=row["title"], use_container_width=True)
     
+
 
 
 
