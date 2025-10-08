@@ -1,6 +1,10 @@
 import streamlit as st
 import pandas as pd
 import time
+import requests
+from PIL import Image
+from io import BytesIO
+
 
 # ================== ⚙️ إعداد الصفحة ==================
 st.set_page_config(page_title="📚 مكتبة الذكاء الاصطناعي", page_icon="📘", layout="wide")
@@ -209,6 +213,11 @@ if search:
 
 # عرض الكتب
 st.markdown('<div class="book-container fade-in">', unsafe_allow_html=True)
+url = row["image"]
+response = requests.get(url)
+img = Image.open(BytesIO(response.content))
+st.image(img, caption=row["title"], use_container_width=True)
+
 
 for _, row in df.iterrows():
     img_html = f"""
@@ -225,5 +234,6 @@ for _, row in df.iterrows():
     """
     st.markdown(img_html, unsafe_allow_html=True)
     
+
 
 
