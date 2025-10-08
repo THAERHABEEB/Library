@@ -1,0 +1,8 @@
+pandas
+os
+streamlit
+datetime
+altair
+imagehash
+fpdf
+pillow
